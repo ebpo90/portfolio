@@ -172,9 +172,6 @@ function wp_portfolio_theloop_for_landing() {
 	if( have_posts() ) {
 		while( have_posts() ) {
 			the_post();
-				// do_action( 'wp_portfolio_before_post' );
-				// do_action( 'wp_portfolio_after_post_header' );
-				// do_action( 'wp_portfolio_before_post_content' );
 				the_content(); ?>
 				<?php
 					wp_link_pages( array(
@@ -186,15 +183,8 @@ function wp_portfolio_theloop_for_landing() {
 					'echo'              => 1
 					) );
 				?>
-				<?php
-					// do_action( 'wp_portfolio_after_post_content' );
-					// do_action( 'wp_portfolio_before_comments_template' );
-					// comments_template();
-					// do_action ( 'wp_portfolio_after_comments_template' );
-				?>
 		<?php
-			// do_action( 'wp_portfolio_after_post' );
-		}
+			}
 	}
 	else { ?>
 	<h2 class="entry-title">
