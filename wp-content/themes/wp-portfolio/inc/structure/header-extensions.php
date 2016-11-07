@@ -147,6 +147,8 @@ function wp_portfolio_header_title() {
 		$wp_portfolio_header_title = __('Search Results', 'wp-portfolio');
 	} elseif (is_page_template()) {
 		$wp_portfolio_header_title = get_the_title();
+	} elseif (is_landing_template()) {
+		$wp_portfolio_header_title = get_the_title();
 	} else {
 		$wp_portfolio_header_title = get_the_title();
 	}
