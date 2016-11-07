@@ -170,32 +170,20 @@ function wp_portfolio_landing_headercontent_details() { ?>
 			$header_display = $wp_portfolio_settings['wp_portfolio_header_settings'];
 			if ($header_display != 'disable_both' && $header_display == 'header_text') { ?>
 			<section id="site-logo" class="clearfix">
-			<?php if(is_single() || !is_home()){ ?>
-				<h2 id="site-title">
-					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a>
-				</h2><!-- #site-title -->
-				<p> tamo dentro </p>
-				<?php } else { ?>
 				<h1 id="site-title">
 					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a>
 				</h1><!-- #site-title -->
 				<?php }
-				$site_description = get_bloginfo( 'description', 'display' );
-				if($site_description){?>
-					<h2 id="site-description"><?php bloginfo('description');?> </h2>
-				<?php } ?>
+				$site_description = get_bloginfo( 'description', 'display' );?>
 			</section><!-- #site-logo -->
 				<?php
 			}	elseif ($header_display != 'disable_both' && $header_display == 'header_logo') {
 				?>
 				<section id="site-logo" class="clearfix">
-				<?php if(is_single() || !is_home()){ ?>
-				<h2 id="site-title">
-				     <?php wp_portfolio_the_custom_logo();?><!-- #site-logo -->
-				</h2>
-				<?php }else{ ?>
 				<h1 id="site-title">
 				     <?php wp_portfolio_the_custom_logo();?><!-- #site-logo -->
+						 <p> tamo dentro </p>
+
 				</h1>
 				<?php } ?>
 				</section>
