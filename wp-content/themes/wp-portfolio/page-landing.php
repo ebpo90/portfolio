@@ -1,5 +1,5 @@
 
-<?php get_header();
+<?php get_header($landing);
 do_action('wp_portfolio_before_primary');
 ?>
 <div id="primary landing">
