@@ -187,13 +187,13 @@ function wp_portfolio_theloop_for_landing() {
 					) );
 				?>
 				<?php
-					do_action( 'wp_portfolio_after_post_content' );
-					do_action( 'wp_portfolio_before_comments_template' );
-					comments_template();
-					do_action ( 'wp_portfolio_after_comments_template' );
+					// do_action( 'wp_portfolio_after_post_content' );
+					// do_action( 'wp_portfolio_before_comments_template' );
+					// comments_template();
+					// do_action ( 'wp_portfolio_after_comments_template' );
 				?>
 		<?php
-			do_action( 'wp_portfolio_after_post' );
+			// do_action( 'wp_portfolio_after_post' );
 		}
 	}
 	else { ?>
