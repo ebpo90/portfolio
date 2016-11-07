@@ -19,6 +19,8 @@
 	</head>
 	<body <?php body_class(); ?>>
 		<div id="page" class="hfeed site">
+			<p> tamo dentro </p>
+
 			<?php
 				 do_action('wp_portfolio_landing_header');
 			?>
