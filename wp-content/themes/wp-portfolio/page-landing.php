@@ -3,7 +3,6 @@
 // do_action('wp_portfolio_before_primary');
 ?>
 <div id="primary landing">
-	<p> soy yo </p>
 <?php
 
 // do_action('wp_portfolio_before_loop_content');

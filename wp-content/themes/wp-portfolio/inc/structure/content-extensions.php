@@ -172,7 +172,7 @@ function wp_portfolio_theloop_for_landing() {
 	if( have_posts() ) {
 		while( have_posts() ) {
 			the_post();
-				do_action( 'wp_portfolio_before_post' );
+				// do_action( 'wp_portfolio_before_post' );
 					if( is_home() || is_front_page() ) { ?>
 					<h2 class="entry-title">
 						<?php the_title(); ?>
