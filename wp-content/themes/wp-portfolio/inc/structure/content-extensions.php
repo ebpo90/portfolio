@@ -173,14 +173,8 @@ function wp_portfolio_theloop_for_landing() {
 		while( have_posts() ) {
 			the_post();
 				// do_action( 'wp_portfolio_before_post' );
-					if( is_home() || is_front_page() ) { ?>
-					<h2 class="entry-title">
-						<?php the_title(); ?>
-					</h2><!-- .entry-title -->
-				<?php
-					}
-				do_action( 'wp_portfolio_after_post_header' );
-				do_action( 'wp_portfolio_before_post_content' );
+				// do_action( 'wp_portfolio_after_post_header' );
+				// do_action( 'wp_portfolio_before_post_content' );
 				the_content(); ?>
 				<?php
 					wp_link_pages( array(
