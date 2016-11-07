@@ -168,26 +168,14 @@ function wp_portfolio_landing_headercontent_details() { ?>
 	<?php global $wp_portfolio_settings;
 		$wp_portfolio_settings = wp_parse_args(  get_option( 'wp_portfolio_theme_settings', array() ),  wp_portfolio_get_option_defaults() );
 			$header_display = $wp_portfolio_settings['wp_portfolio_header_settings'];
-			if ($header_display != 'disable_both' && $header_display == 'header_text') { ?>
-			<section id="site-logo" class="clearfix">
-				<h1 id="site-title">
-					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a>
-				</h1><!-- #site-title -->
-				<?php }
 				$site_description = get_bloginfo( 'description', 'display' );?>
-			</section><!-- #site-logo -->
-				<?php
-			}	elseif ($header_display != 'disable_both' && $header_display == 'header_logo') {
-				?>
 				<section id="site-logo" class="clearfix">
 				<h1 id="site-title">
 				     <?php wp_portfolio_the_custom_logo();?><!-- #site-logo -->
 						 <p> tamo dentro </p>
 
 				</h1>
-				<?php } ?>
 				</section>
-			<?php }?>
 			<button class="menu-toggle"><?php _e('Responsive Menu', 'wp-portfolio' ); ?></button>
 			<?php
 			if (has_nav_menu('primary')) {// if there is nav menu then content displayed from nav menu else from pages ?>
