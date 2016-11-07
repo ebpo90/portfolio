@@ -32,12 +32,12 @@ function wp_portfolio_headercontent_details() { ?>
 			if ($header_display != 'disable_both' && $header_display == 'header_text') { ?>
 			<section id="site-logo" class="clearfix">
 			<?php if(is_single() || !is_home()){ ?>
-				<h2 id="site-title"> 
-					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a> 
+				<h2 id="site-title">
+					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a>
 				</h2><!-- #site-title -->
 				<?php } else { ?>
-				<h1 id="site-title"> 
-					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a> 
+				<h1 id="site-title">
+					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a>
 				</h1><!-- #site-title -->
 				<?php }
 				$site_description = get_bloginfo( 'description', 'display' );
@@ -61,7 +61,7 @@ function wp_portfolio_headercontent_details() { ?>
 				</section>
 			<?php }?>
 			<button class="menu-toggle"><?php _e('Responsive Menu', 'wp-portfolio' ); ?></button>
-			<?php  
+			<?php
 			if (has_nav_menu('primary')) {// if there is nav menu then content displayed from nav menu else from pages ?>
 			<?php $args = array(
 						'theme_location' => 'primary',
@@ -83,7 +83,7 @@ function wp_portfolio_headercontent_details() { ?>
 	<?php
 		$wp_portfolio_header_image = get_header_image();
 		if (!empty($wp_portfolio_header_image)):?>
-			<a href="<?php echo esc_url(home_url('/'));?>"><img src="<?php echo esc_url($wp_portfolio_header_image);?>" class="header-image" width="<?php echo get_custom_header()->width;?>" height="<?php echo get_custom_header()->height;?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display'));?>"> 
+			<a href="<?php echo esc_url(home_url('/'));?>"><img src="<?php echo esc_url($wp_portfolio_header_image);?>" class="header-image" width="<?php echo get_custom_header()->width;?>" height="<?php echo get_custom_header()->height;?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display'));?>">
 			</a>
 		<?php endif;
 			if (!is_front_page()) {

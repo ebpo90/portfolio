@@ -33,6 +33,9 @@ function wp_portfolio_theloop() {
 	if( is_page() ) {
 		wp_portfolio_theloop_for_page();
 	}
+	if( is_landing() ) {
+		wp_portfolio_theloop_for_landing();
+	}
 	elseif( is_single() ) {
 		wp_portfolio_theloop_for_single();
 	}
@@ -76,10 +79,10 @@ function wp_portfolio_theloop_for_archive() {
 							<span class="sticky-post"><?php _e('Featured','wp-portfolio');?></span>
 							<?php } ?>
 							<header class="entry-header">
-								<?php 
+								<?php
 								if (get_the_author() !=''){?>
 									<div class="entry-meta">
-										<span class="cat-links"><?php the_category(', '); ?></span><!-- .cat-links --> 
+										<span class="cat-links"><?php the_category(', '); ?></span><!-- .cat-links -->
 									</div> <!-- .entry-meta -->
 								<?php
 								} ?>
@@ -88,7 +91,7 @@ function wp_portfolio_theloop_for_archive() {
 											<?php the_title();?>
 										</a>
 									</h2><!-- .entry-title -->
-								<?php 
+								<?php
 						      if (has_category() !=''){?>
 									<div class="entry-meta clearfix">
 										<div class="by-author vcard author">
@@ -100,7 +103,7 @@ function wp_portfolio_theloop_for_archive() {
 										<div class="date updated"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( get_the_time() ); ?>">
 											<?php the_time( get_option( 'date_format' ) ); ?></a>
 										</div>
-										<?php 
+										<?php
 										if ( comments_open() ) { ?>
 										<div class="comments">
 											<?php comments_popup_link( __( 'No Comments', 'wp-portfolio' ), __( '1 Comment', 'wp-portfolio' ), __( '% Comments', 'wp-portfolio' ), '', __( 'Comments Off', 'wp-portfolio' ) ); ?>
@@ -122,7 +125,7 @@ function wp_portfolio_theloop_for_archive() {
 									</span><!-- .tag-links -->
 								<?php  } ?>
 								</footer><!-- .entry-meta -->
-								<?php 
+								<?php
 								}else { ?>
 									<p><?php the_content(); ?></p>
 								</header><!-- .entry-header -->
@@ -151,11 +154,63 @@ function wp_portfolio_theloop_for_archive() {
 			<h2 class="entry-title">
 				<?php _e( 'No Posts Found.', 'wp-portfolio' ); ?>
 			</h2>
-		<?php } 
+		<?php }
 	if($wp_portfolio_post_layout !='blog_layout') {	?>
 	</div><!-- #post-main -->
 	<?php }
 	}
+endif;
+/****************************************************************************************/
+if ( ! function_exists( 'wp_portfolio_theloop_for_landing' ) ) :
+/**
+ * Fuction to show the page content.
+ */
+function wp_portfolio_theloop_for_landing() {
+	echo '<div class="entry-main">
+		<div class="entry-content">';
+	global $post;
+	if( have_posts() ) {
+		while( have_posts() ) {
+			the_post();
+				do_action( 'wp_portfolio_before_post' );
+					if( is_home() || is_front_page() ) { ?>
+					<h2 class="entry-title">
+						<?php the_title(); ?>
+					</h2><!-- .entry-title -->
+				<?php
+					}
+				do_action( 'wp_portfolio_after_post_header' );
+				do_action( 'wp_portfolio_before_post_content' );
+				the_content(); ?>
+				<?php
+					wp_link_pages( array(
+					'before'            => '<div style="clear: both;"></div><div class="pagination clearfix">'.__( 'Pages:', 'wp-portfolio' ),
+					'after'             => '</div>',
+					'link_before'       => '<span>',
+					'link_after'        => '</span>',
+					'pagelink'          => '%',
+					'echo'              => 1
+					) );
+				?>
+				<?php
+					do_action( 'wp_portfolio_after_post_content' );
+					do_action( 'wp_portfolio_before_comments_template' );
+					comments_template();
+					do_action ( 'wp_portfolio_after_comments_template' );
+				?>
+		<?php
+			do_action( 'wp_portfolio_after_post' );
+		}
+	}
+	else { ?>
+	<h2 class="entry-title">
+		<?php _e( 'No Posts Found.', 'wp-portfolio' ); ?>
+	</h2>
+<?php
+	}
+		echo '</div><!-- .entry-content -->
+	</div><!-- .entry-main -->';
+}
 endif;
 /****************************************************************************************/
 if ( ! function_exists( 'wp_portfolio_theloop_for_page' ) ) :
@@ -180,7 +235,7 @@ function wp_portfolio_theloop_for_page() {
 				do_action( 'wp_portfolio_before_post_content' );
 				the_content(); ?>
 				<?php
-					wp_link_pages( array( 
+					wp_link_pages( array(
 					'before'            => '<div style="clear: both;"></div><div class="pagination clearfix">'.__( 'Pages:', 'wp-portfolio' ),
 					'after'             => '</div>',
 					'link_before'       => '<span>',
@@ -189,10 +244,10 @@ function wp_portfolio_theloop_for_page() {
 					'echo'              => 1
 					) );
 				?>
-				<?php 
+				<?php
 					do_action( 'wp_portfolio_after_post_content' );
 					do_action( 'wp_portfolio_before_comments_template' );
-					comments_template(); 
+					comments_template();
 					do_action ( 'wp_portfolio_after_comments_template' );
 				?>
 		<?php
@@ -229,7 +284,7 @@ function wp_portfolio_theloop_for_single() {
 							<div class="entry-meta">
 								<span class="cat-links">
 									<?php the_category(', '); ?>
-								</span><!-- .cat-links --> 
+								</span><!-- .cat-links -->
 							</div><!-- .entry-meta -->
 							<h2 class="entry-title"><?php the_title();?> </h2> <!-- .entry-title -->
 							<div class="entry-meta clearfix">
@@ -247,13 +302,13 @@ function wp_portfolio_theloop_for_single() {
 									<?php comments_popup_link( __( 'No Comments', 'wp-portfolio' ), __( '1 Comment', 'wp-portfolio' ), __( '% Comments', 'wp-portfolio' ), '', __( 'Comments Off', 'wp-portfolio' ) ); ?>
 								</div>
 								<?php } ?>
-							</div><!-- .entry-meta --> 
+							</div><!-- .entry-meta -->
 						<?php
 							} ?>
 						</header><!-- .entry-header -->
 						<div class="entry-content clearfix">
 							<?php the_content();
-							wp_link_pages( array( 
+							wp_link_pages( array(
 								'before'			=> '<div style="clear: both;"></div><div class="pagination clearfix">'.__( 'Pages:', 'wp-portfolio' ),
 								'after'			=> '</div>',
 								'link_before'	=> '<span>',
@@ -271,7 +326,7 @@ function wp_portfolio_theloop_for_single() {
 								</span><!-- .tag-links -->
 							<?php } ?>
 						</footer><!-- .entry-meta -->
-						<?php 
+						<?php
 						}
 							do_action( 'wp_portfolio_before_comments_template' );
 							comments_template();
@@ -349,7 +404,7 @@ function wp_portfolio_next_previous() {
 		 */
 		if ( function_exists('wp_pagenavi' ) ) :
 			wp_pagenavi();
-		else: 
+		else:
 			global $wp_query;
 			if ( $wp_query->max_num_pages > 1 ) : ?>
 				<div class="nav-links clearfix">
@@ -466,7 +521,7 @@ function wp_portfolio_comment( $comment, $args, $depth ) {
 		</section><!-- .comment-content -->
 		<div class="reply">
 			<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', 'wp-portfolio' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-		</div><!-- .reply --> 
+		</div><!-- .reply -->
 	</article><!-- #comment-## -->
 	<?php
 		break;
