@@ -20,5 +20,5 @@
 	<body <?php body_class(); ?>>
 		<div id="page" class="hfeed site">
 			<?php
-				// do_action('wp_portfolio_header');
+				 do_action('wp_portfolio_landing_header');
 			?>
