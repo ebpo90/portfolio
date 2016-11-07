@@ -175,16 +175,17 @@ function wp_portfolio_landing_headercontent_details() { ?>
 
 				</h1>
 				</section> -->
-			<button class="menu-toggle"><?php _e('Responsive Menu', 'wp-portfolio' ); ?></button>
-			<?php $args = array(
+				<!-- #masthead
+			<button class="menu-toggle"><?php /* _e('Responsive Menu', 'wp-portfolio' ); */ ?></button>
+			<?php /*  $args = array(
 						'theme_location' => 'primary',
 						'container'      => '',
 						'items_wrap'     => '<ul class="nav-menu">%3$s</ul>',
-					); ?>
+					); */ ?>
 				<nav id="site-navigation" class="main-navigation clearfix" role="navigation">
-					<?php wp_nav_menu($args);//extract the content from apperance-> nav menu ?>
-				</nav><!-- #access -->
-</header><!-- #masthead -->
+					<?php /* wp_nav_menu($args);//extract the content from apperance-> nav menu */ ?>
+				</nav>
+</header>-->
 <div id="content">
 	<?php
 		$wp_portfolio_header_image = get_header_image();
