@@ -154,3 +154,98 @@ function wp_portfolio_header_title() {
 }
 endif;
 ?>
+<?php
+
+/****************************************************************************************/
+add_action('wp_portfolio_landing_header', 'wp_portfolio_landing_headercontent_details', 10);
+/**
+ * Shows Header content details
+ *
+ * Shows the site logo, title, description, searchbar, social icons and many more
+ */
+function wp_portfolio_landing_headercontent_details() { ?>
+<header id="masthead" class="site-header" role="banner">
+	<?php global $wp_portfolio_settings;
+		$wp_portfolio_settings = wp_parse_args(  get_option( 'wp_portfolio_theme_settings', array() ),  wp_portfolio_get_option_defaults() );
+			$header_display = $wp_portfolio_settings['wp_portfolio_header_settings'];
+			if ($header_display != 'disable_both' && $header_display == 'header_text') { ?>
+			<section id="site-logo" class="clearfix">
+			<?php if(is_single() || !is_home()){ ?>
+				<h2 id="site-title">
+					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a>
+				</h2><!-- #site-title -->
+				<p> tamo dentro </p>
+				<?php } else { ?>
+				<h1 id="site-title">
+					<a href="<?php echo esc_url(home_url('/'));?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'));?>" rel="home"> <?php bloginfo('name');?> </a>
+				</h1><!-- #site-title -->
+				<?php }
+				$site_description = get_bloginfo( 'description', 'display' );
+				if($site_description){?>
+					<h2 id="site-description"><?php bloginfo('description');?> </h2>
+				<?php } ?>
+			</section><!-- #site-logo -->
+				<?php
+			}	elseif ($header_display != 'disable_both' && $header_display == 'header_logo') {
+				?>
+				<section id="site-logo" class="clearfix">
+				<?php if(is_single() || !is_home()){ ?>
+				<h2 id="site-title">
+				     <?php wp_portfolio_the_custom_logo();?><!-- #site-logo -->
+				</h2>
+				<?php }else{ ?>
+				<h1 id="site-title">
+				     <?php wp_portfolio_the_custom_logo();?><!-- #site-logo -->
+				</h1>
+				<?php } ?>
+				</section>
+			<?php }?>
+			<button class="menu-toggle"><?php _e('Responsive Menu', 'wp-portfolio' ); ?></button>
+			<?php
+			if (has_nav_menu('primary')) {// if there is nav menu then content displayed from nav menu else from pages ?>
+			<?php $args = array(
+						'theme_location' => 'primary',
+						'container'      => '',
+						'items_wrap'     => '<ul class="nav-menu">%3$s</ul>',
+					); ?>
+				<nav id="site-navigation" class="main-navigation clearfix" role="navigation">
+					<?php wp_nav_menu($args);//extract the content from apperance-> nav menu ?>
+				</nav><!-- #access -->
+		<?php } else {// extract the content from page menu only ?>
+			<section class="hgroup-right">
+				<nav id="site-navigation" class="main-navigation clearfix" role="navigation">
+					<?php	wp_page_menu(array('menu_class' => 'nav-menu')); ?>
+				</nav><!-- #access -->
+			</section>
+			<?php	} ?>
+</header><!-- #masthead -->
+<div id="content">
+	<?php
+		$wp_portfolio_header_image = get_header_image();
+		if (!empty($wp_portfolio_header_image)):?>
+			<a href="<?php echo esc_url(home_url('/'));?>"><img src="<?php echo esc_url($wp_portfolio_header_image);?>" class="header-image" width="<?php echo get_custom_header()->width;?>" height="<?php echo get_custom_header()->height;?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display'));?>">
+			</a>
+		<?php endif;
+			if (!is_front_page()) {
+				if (('' != wp_portfolio_header_title()) || function_exists('bcn_display_list')) {
+					if(is_single() && function_exists('bcn_display_list')){
+						if (function_exists('wp_portfolio_breadcrumb')) { ?>
+						<div class="page-title-wrap clearfix">
+								<?php	wp_portfolio_breadcrumb();
+						} ?>
+						</div><!-- .page-title-wrap -->
+					<?php }
+					elseif(is_single() && !function_exists('bcn_display_list')){
+					}else{ ?>
+						<div class="page-title-wrap clearfix">
+								<h1 class="page-title"><?php echo wp_portfolio_header_title();?></h1><!-- .page-title -->
+							<?php
+								if (function_exists('wp_portfolio_breadcrumb')) {
+									wp_portfolio_breadcrumb();
+								}
+							?>
+						</div><!-- .page-title-wrap -->
+					<?php }
+				}
+			} ?>
+<?php }
