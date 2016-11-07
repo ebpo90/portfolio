@@ -33,7 +33,7 @@ function wp_portfolio_theloop() {
 	if( is_page() ) {
 		wp_portfolio_theloop_for_page();
 	}
-	if( is_landing() ) {
+	elseif( is_landing() ) {
 		wp_portfolio_theloop_for_landing();
 	}
 	elseif( is_single() ) {
