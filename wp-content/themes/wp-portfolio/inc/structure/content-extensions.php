@@ -30,11 +30,11 @@ add_action( 'wp_portfolio_loop_content', 'wp_portfolio_theloop', 10 );
  * Shows the loop content
  */
 function wp_portfolio_theloop() {
-	if( is_page() ) {
-		wp_portfolio_theloop_for_page();
-	}
-	elseif( is_landing() ) {
+	if( is_page($page = 'landing') ) {
 		wp_portfolio_theloop_for_landing();
+	}
+	elseif( is_page() ) {
+		wp_portfolio_theloop_for_page();
 	}
 	elseif( is_single() ) {
 		wp_portfolio_theloop_for_single();
