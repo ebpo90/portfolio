@@ -1,5 +1,5 @@
 
-<?php get_header($landing);?>
+<?php get_header('landing');?>
 <div id="primary landing">
 <?php
 do_action('wp_portfolio_loop_content');
