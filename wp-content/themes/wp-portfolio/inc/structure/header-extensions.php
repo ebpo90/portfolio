@@ -169,12 +169,12 @@ function wp_portfolio_landing_headercontent_details() { ?>
 		$wp_portfolio_settings = wp_parse_args(  get_option( 'wp_portfolio_theme_settings', array() ),  wp_portfolio_get_option_defaults() );
 			$header_display = $wp_portfolio_settings['wp_portfolio_header_settings'];
 				$site_description = get_bloginfo( 'description', 'display' );?>
-				<section id="site-logo" class="clearfix">
+				<!-- <section id="site-logo" class="clearfix">
 				<h1 id="site-title">
 						 <p> tamo dentro </p>
 
 				</h1>
-				</section>
+				</section> -->
 			<button class="menu-toggle"><?php _e('Responsive Menu', 'wp-portfolio' ); ?></button>
 			<?php $args = array(
 						'theme_location' => 'primary',
