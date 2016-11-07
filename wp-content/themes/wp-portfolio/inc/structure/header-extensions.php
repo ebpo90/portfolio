@@ -171,14 +171,11 @@ function wp_portfolio_landing_headercontent_details() { ?>
 				$site_description = get_bloginfo( 'description', 'display' );?>
 				<section id="site-logo" class="clearfix">
 				<h1 id="site-title">
-				     <?php wp_portfolio_the_custom_logo();?><!-- #site-logo -->
 						 <p> tamo dentro </p>
 
 				</h1>
 				</section>
 			<button class="menu-toggle"><?php _e('Responsive Menu', 'wp-portfolio' ); ?></button>
-			<?php
-			if (has_nav_menu('primary')) {// if there is nav menu then content displayed from nav menu else from pages ?>
 			<?php $args = array(
 						'theme_location' => 'primary',
 						'container'      => '',
@@ -187,13 +184,6 @@ function wp_portfolio_landing_headercontent_details() { ?>
 				<nav id="site-navigation" class="main-navigation clearfix" role="navigation">
 					<?php wp_nav_menu($args);//extract the content from apperance-> nav menu ?>
 				</nav><!-- #access -->
-		<?php } else {// extract the content from page menu only ?>
-			<section class="hgroup-right">
-				<nav id="site-navigation" class="main-navigation clearfix" role="navigation">
-					<?php	wp_page_menu(array('menu_class' => 'nav-menu')); ?>
-				</nav><!-- #access -->
-			</section>
-			<?php	} ?>
 </header><!-- #masthead -->
 <div id="content">
 	<?php
