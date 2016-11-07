@@ -13,8 +13,7 @@
 	 */
 	do_action('wp_portfolio_before_primary');
 	?>
-	<div id="primary">
-		<p>Landing is here</p> 
+	<div id="primary landing">
 	<?php
 	/**
 	 * wp_portfolio_before_loop_content
